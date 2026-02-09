@@ -1,22 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Japanese Kana Trainer</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap" rel="stylesheet" />
 
 <style>
 
 body{
 margin:0;
-font-family:Arial, sans-serif;
-background:url("https://images.unsplash.com/photo-1549692520-acc6669e2f0c") no-repeat center;
+font-family:'Inter',sans-serif;
+background:url("https://images.unsplash.com/photo-1528360983277-13d401cdc186") no-repeat center;
 background-size:cover;
 color:white;
 }
 
 .overlay{
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.7);
 min-height:100vh;
 padding:20px;
 }
@@ -27,7 +30,7 @@ h1{text-align:center;}
 margin:5px;
 padding:10px 15px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 cursor:pointer;
 font-size:16px;
 }
@@ -53,68 +56,79 @@ cursor:pointer;
 }
 
 </style>
+
 </head>
 
 <body>
+
 <div class="overlay">
 
 <h1>Japanese Kana Trainer</h1>
 
 <div class="menu">
+
 <button onclick="show('home')">Ana Menü</button>
 <button onclick="show('quizMenu')">Quiz</button>
 <button onclick="show('learning')">Öğrenme</button>
 <button onclick="show('learnQuiz')">Öğrenerek Quiz</button>
+
 </div>
 
 <!-- HOME -->
 <div id="home" class="card">
-<h2>Mod Seçimi</h2>
 
-<h3>Hiragana</h3>
-<button onclick="startQuiz('hiragana_basic')">Temel Hiragana</button>
-<button onclick="startQuiz('hiragana_all')">Tüm Hiragana</button>
-<button onclick="startQuiz('hiragana_fonts')">Fontlu Hiragana</button>
+<h2>Hiragana Modları</h2>
+
+<button onclick="startQuiz()">Temel Hiragana</button>
+<button onclick="startQuiz()">Tüm Hiragana</button>
+<button onclick="startQuiz()">Fontlu Hiragana</button>
 
 <h3>Karışık</h3>
-<button onclick="startQuiz('mixed')">Katakana + Hiragana</button>
+<button onclick="startQuiz()">Katakana + Hiragana</button>
 
 </div>
 
 <!-- QUIZ MENU -->
 <div id="quizMenu" class="card hidden">
+
 <h2>Quiz Türü</h2>
 
 <button onclick="quizType='romaji_to_kana'">Romaji → Kana</button>
 <button onclick="quizType='kana_to_romaji'">Kana → Romaji</button>
-<button onclick="quizType='mixed_quiz'">Karışık Quiz</button>
 
 </div>
 
 <!-- QUIZ -->
 <div id="quiz" class="card hidden">
+
 <h2 id="question"></h2>
+
 <div id="answers"></div>
+
 <p id="result"></p>
+
 </div>
 
 <!-- LEARNING -->
 <div id="learning" class="card hidden">
+
 <h2>Harf Öğrenme</h2>
 
-<h3>Hiragana Tablosu</h3>
+<h3>Hiragana</h3>
 <img width="400" src="https://upload.wikimedia.org/wikipedia/commons/2/2c/Hiragana_chart.svg">
 
-<h3>Katakana Tablosu</h3>
+<h3>Katakana</h3>
 <img width="400" src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Katakana_chart.svg">
 
 </div>
 
 <!-- LEARN QUIZ -->
 <div id="learnQuiz" class="card hidden">
+
 <h2>Öğrenerek Quiz</h2>
-<p>Harf gösterilir, önce öğren sonra cevapla.</p>
+
 <button onclick="learningMode()">Başla</button>
+
 </div>
 
 </div>
@@ -122,11 +136,13 @@ cursor:pointer;
 <script>
 
 const kana = [
+
 {romaji:"a", hira:"あ"},
 {romaji:"i", hira:"い"},
 {romaji:"u", hira:"う"},
 {romaji:"e", hira:"え"},
 {romaji:"o", hira:"お"}
+
 ];
 
 let quizType="romaji_to_kana";
@@ -138,7 +154,7 @@ document.getElementById(id).classList.remove("hidden");
 
 }
 
-function startQuiz(mode){
+function startQuiz(){
 
 show("quiz");
 nextQuestion();
@@ -146,7 +162,9 @@ nextQuestion();
 }
 
 function shuffle(array){
+
 return array.sort(()=>Math.random()-0.5);
+
 }
 
 function nextQuestion(){
@@ -171,9 +189,7 @@ answers.appendChild(btn);
 
 });
 
-}
-
-else{
+}else{
 
 document.getElementById("question").innerText=q.hira;
 
@@ -200,7 +216,7 @@ setTimeout(nextQuestion,1000);
 
 function learningMode(){
 
-alert("Öğrenme modu başlatıldı. (Geliştirilebilir alan)");
+alert("Öğrenme modu başlatıldı.");
 
 }
 
